@@ -1,0 +1,27 @@
+# Template information section
+name: "rx_vip"
+summary: "RxVIP module template"
+author: "jp.alary"
+version: "0.0.1"
+license: "MIT"
+
+code_files:
+
+- {name: Command.swift, path: Code/Command.swift.liquid}
+
+# View layer
+- {name: View/ViewController.swift, path: Code/View/ViewController.swift.liquid}
+
+# Interactor layer
+- {name: Interactor/Interactor.swift, path: Code/Interactor/Interactor.swift.liquid}
+- {name: Interactor/ViewOutput.swift, path: Code/Interactor/ViewOutput.swift.liquid}
+
+# Presenter layer
+- {name: Presenter/InteractorOutput.swift, path: Code/Presenter/InteractorOutput.swift.liquid}
+- {name: Presenter/Presenter.swift, path: Code/Presenter/Presenter.swift.liquid}
+- {name: Presenter/ViewInput.swift, path: Code/Presenter/ViewInput.swift.liquid}
+
+test_files:
+
+- {name: InteractorTests.swift, path: Tests/InteractorTests.swift.liquid}
+- {name: PresenterTests.swift, path: Tests/PresenterTests.swift.liquid}

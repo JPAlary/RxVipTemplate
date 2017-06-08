@@ -1,0 +1,46 @@
+//
+//  {{ module_info.name }}ViewController.swift
+//  {{ developer.company }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+import RxSwift
+
+final class {{ module_info.name }}ViewController: UIViewController {
+	private let disposeBag: DisposeBag
+	private let output: {{ module_info.name }}ViewOutput
+	private weak var input: {{ module_info.name }}ViewInput?
+
+	// MARK: - Initializer
+
+	init(output: {{ module_info.name }}ViewOutput, input: {{ module_info.name }}ViewInput) {
+		disposeBag = DisposeBag()
+
+		self.output = output
+		self.input = input
+
+		super.init(nibName: nil, bundle: nil)
+	}
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("{{ module_info.name }}ViewController must not be instanciated with interface builder")
+    }
+
+    // MARK: - View life cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        bindOutput()
+        bindInput()
+    }
+
+    // MARK: - Private
+
+    private func bindOutput() {}
+
+    private func bindInput() {}
+}

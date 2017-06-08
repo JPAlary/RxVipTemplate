@@ -1,0 +1,42 @@
+//
+//  {{ module_info.name }}Interactor.swift
+//  {{ developer.company }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+
+final class {{ module_info.name }}Presenter: {{ module_info.name }}ViewInput, {{ module_info.name }}InteractorOutput {
+	private let disposeBag: DisposeBag
+	private let responseSubject: PublishSubject<{{ module_info.name }}Command.Response>
+	private let currentViewModel: Variable<{{ module_info.name }}Command.ViewModel>
+
+	// MARK: - Initializer
+
+	init() {
+		disposeBag = DisposeBag()
+		responseSubject = PublishSubject()
+		currentViewModel = Variable({{ module_info.name }}Command.ViewModel())
+
+		bindResponseEvent()
+	}
+
+	// MARK: - {{ module_info.name }}InteractorOutput
+
+	var handleResponse: AnyObserver<{{ module_info.name }}Command.Response> {
+		return responseSubject.asObserver()
+	}
+
+	// MARK: {{ module_info.name }}ViewInput
+
+	var viewModel: Driver<{{ module_info.name }}Command.ViewModel> {
+		return currentViewModel.asDriver()
+	}
+
+	// MARK: Private
+
+	private func bindResponseEvent() {}
+}

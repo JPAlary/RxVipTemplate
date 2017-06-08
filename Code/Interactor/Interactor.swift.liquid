@@ -1,0 +1,36 @@
+//
+//  {{ module_info.name }}Interactor.swift
+//  {{ developer.company }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+
+struct {{ module_info.name }}Interactor: {{ module_info.name }}ViewOutput {
+	private let disposeBag: DisposeBag
+	private let requestSubject: PublishSubject<{{ module_info.name }}Command.Request>
+	private let output: {{ module_info.name }}InteractorOutput
+
+	// MARK: - Initializer
+
+	init(output: {{ module_info.name }}InteractorOutput) {
+		disposeBag = DisposeBag()
+		requestSubject = PublishSubject()
+
+		self.output = output
+
+		bindRequestEvent()
+	}
+
+	// MARK: - {{ module_info.name }}ViewOutput
+
+	var handleRequest: AnyObserver<{{ module_info.name }}Command.Request> {
+		return requestSubject.asObserver()
+	}
+
+	// MARK: - Private
+
+	private func bindRequestEvent() {}
+}

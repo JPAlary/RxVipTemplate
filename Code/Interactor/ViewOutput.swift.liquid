@@ -1,0 +1,13 @@
+//
+//  {{ module_info.name }}ViewOutput.swift
+//  {{ developer.company }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+
+protocol {{ module_info.name }}ViewOutput {
+	var handleRequest: AnyObserver<{{ module_info.name }}Command.Request> { get }
+}

@@ -1,0 +1,41 @@
+//
+//  {{ module_info.name }}InteractorTests.swift
+//  {{ developer.company }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+@testable import {{ module_info.project_name }}
+import XCTest
+import RxSwift
+
+final class {{ module_info.name }}InteractorTests: XCTestCase {
+	private let disposeBag = DisposeBag()
+
+	// func test_GivenSomething_WhenSomething_ThenShouldDoSomething() {}
+
+	// MARK: - Nested
+
+	final class Mock{{ module_info.name }}InteractorOutput: {{ module_info.name }}InteractorOutput {
+		private let responseSubject: PublishSubject<{{ module_info.name }}Command.Response>
+
+		// MARK: - Initializer
+
+		init() {
+			responseSubject = PublishSubject()
+		}
+
+		// MARK: - {{ module_info.name }}InteractorOutput
+
+		var handleResponse: AnyObserver<{{ module_info.name }}Command.Response> {
+			return responseSubject.asObserver()
+		}
+
+		// MARK: - Public
+
+		var responseEmitted: Observable<{{ module_info.name }}Command.Response> {
+			return responseSubject.asObservable()
+		}
+	}
+}
