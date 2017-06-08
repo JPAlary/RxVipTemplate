@@ -18,7 +18,7 @@ final class {{ module_info.name }}InteractorTests: XCTestCase {
 	// MARK: - Nested
 
 	final class Mock{{ module_info.name }}InteractorOutput: {{ module_info.name }}InteractorOutput {
-		private let responseSubject: PublishSubject<{{ module_info.name }}Command.Response>
+		private let responseSubject: PublishSubject<{{ module_info.name }}Flow.Response>
 
 		// MARK: - Initializer
 
@@ -28,13 +28,13 @@ final class {{ module_info.name }}InteractorTests: XCTestCase {
 
 		// MARK: - {{ module_info.name }}InteractorOutput
 
-		var handleResponse: AnyObserver<{{ module_info.name }}Command.Response> {
+		var handleResponse: AnyObserver<{{ module_info.name }}Flow.Response> {
 			return responseSubject.asObserver()
 		}
 
 		// MARK: - Public
 
-		var responseEmitted: Observable<{{ module_info.name }}Command.Response> {
+		var responseEmitted: Observable<{{ module_info.name }}Flow.Response> {
 			return responseSubject.asObservable()
 		}
 	}

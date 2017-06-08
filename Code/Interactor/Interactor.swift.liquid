@@ -10,7 +10,7 @@ import RxSwift
 
 struct {{ module_info.name }}Interactor: {{ module_info.name }}ViewOutput {
 	private let disposeBag: DisposeBag
-	private let requestSubject: PublishSubject<{{ module_info.name }}Command.Request>
+	private let requestSubject: PublishSubject<{{ module_info.name }}Flow.Request>
 	private let output: {{ module_info.name }}InteractorOutput
 
 	// MARK: - Initializer
@@ -26,11 +26,23 @@ struct {{ module_info.name }}Interactor: {{ module_info.name }}ViewOutput {
 
 	// MARK: - {{ module_info.name }}ViewOutput
 
-	var handleRequest: AnyObserver<{{ module_info.name }}Command.Request> {
+	var handleRequest: AnyObserver<{{ module_info.name }}Flow.Request> {
 		return requestSubject.asObserver()
 	}
 
 	// MARK: - Private
 
-	private func bindRequestEvent() {}
+	private func bindRequestEvent() {
+		/*
+			requestSubject
+				.asObservable()
+				.map { request in
+					switch request {
+					case .myRequest: return self.handleMyRequest()
+					}
+				}
+				.bind(to: output.handleResponse)
+				.disposed(by: disposeBag)
+		*/
+	}
 }

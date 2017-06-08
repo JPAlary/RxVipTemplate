@@ -40,7 +40,23 @@ final class {{ module_info.name }}ViewController: UIViewController {
 
     // MARK: - Private
 
-    private func bindOutput() {}
+    private func bindOutput() {
+        /*
+            button
+                .rx
+                .tap
+                .map { {{ module_info.name }}Flow.Request.buttonTap }
+                .bind(to: output.handleRequest)
+                .disposed(by: disposeBag)
+        */
+    }
 
-    private func bindInput() {}
+    private func bindInput() {
+        /* input?
+                .viewModel
+                .map { ... }
+                .drive( ... )
+                .disposed(by: disposeBag)
+        */
+    }
 }

@@ -9,5 +9,5 @@
 import RxSwift
 
 protocol {{ module_info.name }}InteractorOutput {
-	var handleResponse: AnyObserver<{{ module_info.name }}Command.Response> { get }
+	var handleResponse: AnyObserver<{{ module_info.name }}Flow.Response> { get }
 }

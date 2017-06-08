@@ -7,7 +7,7 @@ license: "MIT"
 
 code_files:
 
-- {name: Command.swift, path: Code/Command.swift.liquid}
+- {name: Flow.swift, path: Code/Flow.swift.liquid}
 
 # View layer
 - {name: View/ViewController.swift, path: Code/View/ViewController.swift.liquid}

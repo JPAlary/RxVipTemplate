@@ -11,32 +11,48 @@ import RxCocoa
 
 final class {{ module_info.name }}Presenter: {{ module_info.name }}ViewInput, {{ module_info.name }}InteractorOutput {
 	private let disposeBag: DisposeBag
-	private let responseSubject: PublishSubject<{{ module_info.name }}Command.Response>
-	private let currentViewModel: Variable<{{ module_info.name }}Command.ViewModel>
+	private let responseSubject: PublishSubject<{{ module_info.name }}Flow.Response>
+	private let currentViewModel: Variable<{{ module_info.name }}Flow.ViewModel>
 
 	// MARK: - Initializer
 
 	init() {
 		disposeBag = DisposeBag()
 		responseSubject = PublishSubject()
-		currentViewModel = Variable({{ module_info.name }}Command.ViewModel())
+		currentViewModel = Variable({{ module_info.name }}Flow.ViewModel())
 
 		bindResponseEvent()
 	}
 
 	// MARK: - {{ module_info.name }}InteractorOutput
 
-	var handleResponse: AnyObserver<{{ module_info.name }}Command.Response> {
+	var handleResponse: AnyObserver<{{ module_info.name }}Flow.Response> {
 		return responseSubject.asObserver()
 	}
 
 	// MARK: {{ module_info.name }}ViewInput
 
-	var viewModel: Driver<{{ module_info.name }}Command.ViewModel> {
+	var viewModel: Driver<{{ module_info.name }}Flow.ViewModel> {
 		return currentViewModel.asDriver()
 	}
 
 	// MARK: Private
 
-	private func bindResponseEvent() {}
+	private func bindResponseEvent() {
+		/*
+			responseSubject
+				.asObservable()
+				.map { [weak self] response in
+					guard let strongSelf = self else {
+						return .never()
+					}
+
+					switch response {
+					case myResponse: return strongSelf.handleMyResponse()
+					}
+				}
+				.bind(to: currentViewModel)
+				.disposed(by: disposeBag)
+		*/
+	}
 }
