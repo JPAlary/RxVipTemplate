@@ -15,4 +15,30 @@ final class {{ module_info.name }}PresenterTests: XCTestCase {
 	private let disposeBag = DisposeBag()
 
 	// func test_GivenSomething_WhenSomething_ThenShouldDoSomething() {}
+
+	// MARK: - Nested
+
+	final class Mock{{ module_info.name }}PresenterInput: {{ module_info.name }}PresenterInput {
+		private let responseSubject: PublishSubject<{{ module_info.name }}Flow.Response>
+
+		// MARK: - Initializer
+
+		init() {
+			responseSubject = PublishSubject()
+		}
+
+		// MARK: - {{ module_info.name }}PresenterInput
+
+		var response: Observable<{{ module_info.name }}Flow.Response> {
+			return responseSubject.asObservable()
+		}
+
+		// MARK: - Public
+
+		func emit(response: {{ module_info.name }}Flow.Response) {
+			responseSubject
+				.asObserver()
+				.onNext(response)
+		}
+	}
 }

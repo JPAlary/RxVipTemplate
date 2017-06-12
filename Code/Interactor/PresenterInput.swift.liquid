@@ -1,5 +1,5 @@
 //
-//  {{ module_info.name }}InteractorOutput.swift
+//  {{ module_info.name }}PresenterInput.swift
 //  {{ developer.company }}
 //
 //  Created by {{ developer.name }} on {{ date }}.
@@ -8,6 +8,6 @@
 
 import RxSwift
 
-protocol {{ module_info.name }}InteractorOutput {
-	var handleResponse: AnyObserver<{{ module_info.name }}Flow.Response> { get }
+protocol {{ module_info.name }}PresenterInput {
+	var response: Observable<{{ module_info.name }}Flow.Response> { get }
 }

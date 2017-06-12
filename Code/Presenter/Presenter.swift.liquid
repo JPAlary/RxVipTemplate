@@ -9,50 +9,32 @@
 import RxSwift
 import RxCocoa
 
-final class {{ module_info.name }}Presenter: {{ module_info.name }}ViewInput, {{ module_info.name }}InteractorOutput {
+struct {{ module_info.name }}Presenter: {{ module_info.name }}ViewInput {
 	private let disposeBag: DisposeBag
-	private let responseSubject: PublishSubject<{{ module_info.name }}Flow.Response>
-	private let currentViewModel: Variable<{{ module_info.name }}Flow.ViewModel>
+	private let input: {{ module_info.name }}PresenterInput
 
 	// MARK: - Initializer
 
-	init() {
+	init(input: {{ module_info.name }}PresenterInput) {
 		disposeBag = DisposeBag()
-		responseSubject = PublishSubject()
-		currentViewModel = Variable({{ module_info.name }}Flow.ViewModel())
 
-		bindResponseEvent()
-	}
-
-	// MARK: - {{ module_info.name }}InteractorOutput
-
-	var handleResponse: AnyObserver<{{ module_info.name }}Flow.Response> {
-		return responseSubject.asObserver()
+		self.input = input
 	}
 
 	// MARK: {{ module_info.name }}ViewInput
 
 	var viewModel: Driver<{{ module_info.name }}Flow.ViewModel> {
-		return currentViewModel.asDriver()
-	}
-
-	// MARK: Private
-
-	private func bindResponseEvent() {
 		/*
-			responseSubject
-				.asObservable()
-				.map { [weak self] response in
-					guard let strongSelf = self else {
-						return .never()
-					}
-
+			return input
+				.response
+				.map { response in
 					switch response {
-					case myResponse: return strongSelf.handleMyResponse()
+					case .myResponseCase:
+						return {{ module_info.name }}Flow.ViewModel(...)
 					}
 				}
-				.bind(to: currentViewModel)
-				.disposed(by: disposeBag)
 		*/
+
+		return .never()
 	}
 }

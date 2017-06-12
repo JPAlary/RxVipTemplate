@@ -12,7 +12,7 @@ import RxSwift
 final class {{ module_info.name }}ViewController: UIViewController {
 	private let disposeBag: DisposeBag
 	private let output: {{ module_info.name }}ViewOutput
-	private weak var input: {{ module_info.name }}ViewInput?
+	private let input: {{ module_info.name }}ViewInput?
 
 	// MARK: - Initializer
 
@@ -52,7 +52,7 @@ final class {{ module_info.name }}ViewController: UIViewController {
     }
 
     private func bindInput() {
-        /* input?
+        /* input
                 .viewModel
                 .map { ... }
                 .drive( ... )

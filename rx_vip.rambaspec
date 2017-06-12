@@ -13,11 +13,11 @@ code_files:
 - {name: View/ViewController.swift, path: Code/View/ViewController.swift.liquid}
 
 # Interactor layer
+- {name: Interactor/PresenterInput.swift, path: Code/Interactor/PresenterInput.swift.liquid}
 - {name: Interactor/Interactor.swift, path: Code/Interactor/Interactor.swift.liquid}
 - {name: Interactor/ViewOutput.swift, path: Code/Interactor/ViewOutput.swift.liquid}
 
 # Presenter layer
-- {name: Presenter/InteractorOutput.swift, path: Code/Presenter/InteractorOutput.swift.liquid}
 - {name: Presenter/Presenter.swift, path: Code/Presenter/Presenter.swift.liquid}
 - {name: Presenter/ViewInput.swift, path: Code/Presenter/ViewInput.swift.liquid}
 

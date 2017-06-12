@@ -8,20 +8,15 @@
 
 import RxSwift
 
-struct {{ module_info.name }}Interactor: {{ module_info.name }}ViewOutput {
+final class {{ module_info.name }}Interactor: {{ module_info.name }}ViewOutput, {{ module_info.name }}PresenterInput {
 	private let disposeBag: DisposeBag
 	private let requestSubject: PublishSubject<{{ module_info.name }}Flow.Request>
-	private let output: {{ module_info.name }}InteractorOutput
 
 	// MARK: - Initializer
 
-	init(output: {{ module_info.name }}InteractorOutput) {
+	init() {
 		disposeBag = DisposeBag()
 		requestSubject = PublishSubject()
-
-		self.output = output
-
-		bindRequestEvent()
 	}
 
 	// MARK: - {{ module_info.name }}ViewOutput
@@ -30,19 +25,21 @@ struct {{ module_info.name }}Interactor: {{ module_info.name }}ViewOutput {
 		return requestSubject.asObserver()
 	}
 
-	// MARK: - Private
+	// MARK: - {{ module_info.name }}PresenterInput
 
-	private func bindRequestEvent() {
+	var response: Observable<{{ module_info.name }}Flow.Response> {
 		/*
-			requestSubject
-				.asObservable()
-				.map { request in
-					switch request {
-					case .myRequest: return self.handleMyRequest()
-					}
+		return requestSubject
+			.asObservable()
+			.map { request in
+				switch request {
+				case .myRequest: return self.handleMyRequest()
 				}
-				.bind(to: output.handleResponse)
-				.disposed(by: disposeBag)
+			}
+			.flatMap { /* Do some work */}
+			.map { {{ module_info.name }}Flow.Response }
 		*/
+
+		return .never()
 	}
 }

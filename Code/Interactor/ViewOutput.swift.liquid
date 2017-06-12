@@ -8,6 +8,6 @@
 
 import RxSwift
 
-protocol {{ module_info.name }}ViewOutput {
+protocol {{ module_info.name }}ViewOutput: class {
 	var handleRequest: AnyObserver<{{ module_info.name }}Flow.Request> { get }
 }
