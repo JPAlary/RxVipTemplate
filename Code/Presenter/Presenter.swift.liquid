@@ -10,31 +10,31 @@ import RxSwift
 import RxCocoa
 
 struct {{ module_info.name }}Presenter: {{ module_info.name }}ViewInput {
-	private let disposeBag: DisposeBag
-	private let input: {{ module_info.name }}PresenterInput
+    private let disposeBag: DisposeBag
+    private let input: {{ module_info.name }}PresenterInput
 
-	// MARK: - Initializer
+    // MARK: - Initializer
 
-	init(input: {{ module_info.name }}PresenterInput) {
-		disposeBag = DisposeBag()
+    init(input: {{ module_info.name }}PresenterInput) {
+        disposeBag = DisposeBag()
 
-		self.input = input
-	}
+        self.input = input
+    }
 
-	// MARK: {{ module_info.name }}ViewInput
+    // MARK: {{ module_info.name }}ViewInput
 
-	var viewModel: Driver<{{ module_info.name }}Flow.ViewModel> {
-		/*
-			return input
-				.response
-				.map { response in
-					switch response {
-					case .myResponseCase:
-						return {{ module_info.name }}Flow.ViewModel(...)
-					}
-				}
-		*/
+    var viewModel: Driver<{{ module_info.name }}Flow.ViewModel> {
+        /*
+            return input
+                .response
+                .map { response in
+                    switch response {
+                    case .myResponseCase:
+                        return {{ module_info.name }}Flow.ViewModel(...)
+                    }
+                }
+        */
 
-		return .never()
-	}
+        return .never()
+    }
 }
