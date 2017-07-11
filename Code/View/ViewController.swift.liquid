@@ -10,20 +10,20 @@ import UIKit
 import RxSwift
 
 final class {{ module_info.name }}ViewController: UIViewController {
-	private let disposeBag: DisposeBag
-	private let output: {{ module_info.name }}ViewOutput
-	private let input: {{ module_info.name }}ViewInput?
+    private let disposeBag: DisposeBag
+    private let output: {{ module_info.name }}ViewOutput
+    private let input: {{ module_info.name }}ViewInput?
 
-	// MARK: - Initializer
+    // MARK: - Initializer
 
-	init(output: {{ module_info.name }}ViewOutput, input: {{ module_info.name }}ViewInput) {
-		disposeBag = DisposeBag()
+    init(output: {{ module_info.name }}ViewOutput, input: {{ module_info.name }}ViewInput) {
+        disposeBag = DisposeBag()
 
-		self.output = output
-		self.input = input
+        self.output = output
+        self.input = input
 
-		super.init(nibName: nil, bundle: nil)
-	}
+        super.init(nibName: nil, bundle: nil)
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("{{ module_info.name }}ViewController must not be instanciated with interface builder")

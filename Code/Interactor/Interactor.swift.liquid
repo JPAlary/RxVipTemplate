@@ -9,37 +9,37 @@
 import RxSwift
 
 final class {{ module_info.name }}Interactor: {{ module_info.name }}ViewOutput, {{ module_info.name }}PresenterInput {
-	private let disposeBag: DisposeBag
-	private let requestSubject: PublishSubject<{{ module_info.name }}Flow.Request>
+    private let disposeBag: DisposeBag
+    private let requestSubject: PublishSubject<{{ module_info.name }}Flow.Request>
 
-	// MARK: - Initializer
+    // MARK: - Initializer
 
-	init() {
-		disposeBag = DisposeBag()
-		requestSubject = PublishSubject()
-	}
+    init() {
+        disposeBag = DisposeBag()
+        requestSubject = PublishSubject()
+    }
 
-	// MARK: - {{ module_info.name }}ViewOutput
+    // MARK: - {{ module_info.name }}ViewOutput
 
-	var handleRequest: AnyObserver<{{ module_info.name }}Flow.Request> {
-		return requestSubject.asObserver()
-	}
+    var handleRequest: AnyObserver<{{ module_info.name }}Flow.Request> {
+        return requestSubject.asObserver()
+    }
 
-	// MARK: - {{ module_info.name }}PresenterInput
+    // MARK: - {{ module_info.name }}PresenterInput
 
-	var response: Observable<{{ module_info.name }}Flow.Response> {
-		/*
-		return requestSubject
-			.asObservable()
-			.map { request in
-				switch request {
-				case .myRequest: return self.handleMyRequest()
-				}
-			}
-			.flatMap { /* Do some work */}
-			.map { {{ module_info.name }}Flow.Response }
-		*/
+    var response: Observable<{{ module_info.name }}Flow.Response> {
+        /*
+            return requestSubject
+                .asObservable()
+                .map { request in
+                    switch request {
+                    case .myRequest: return self.handleMyRequest()
+                    }
+                }
+                .flatMap { /* Do some work */}
+                .map { {{ module_info.name }}Flow.Response }
+        */
 
-		return .never()
-	}
+        return .never()
+    }
 }
